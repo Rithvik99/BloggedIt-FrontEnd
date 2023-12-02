@@ -15,7 +15,7 @@ const Blogs = ({ setCurrentId }) => {
         !blogs.length ? <CircularProgress /> : (
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
                 {blogs.map((blog) => (
-                    <Grid key={blog._id} item xs={12} sm={6}>
+                    <Grid key={blog._id} item xs={12} sm={12} md={6} lg={3}>
                         <Blog blog={blog} setCurrentId={setCurrentId} />
                     </Grid>
                 ))}

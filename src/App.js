@@ -18,10 +18,10 @@ const App = () => {
         <Container maxWidth="xl">
           <Navbar/>
           <Switch>
-            <Route path="/" exact component={() => <Redirect to="/posts"/>}/>
-            <Route path="/posts" exact component={Home}/> 
-            <Route path="/posts/search" exact component={Home}/>
-            <Route path="/posts/:id" component={BlogDetails}/>
+            <Route path="/" exact component={() => <Redirect to="/blogs"/>}/>
+            <Route path="/blogs" exact component={Home}/> 
+            <Route path="/blogs/search" exact component={Home}/>
+            <Route path="/blogs/:id" component={BlogDetails}/>
             <Route path="/auth" exact component={() => (!user) ? <Auth/> : <Redirect to="/posts"/>}/>
           </Switch>
         </Container>

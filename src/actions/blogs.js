@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
+import { FETCH_ALL, FETCH_BY_SEARCH, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 // Action Creators
@@ -14,8 +14,8 @@ export const getBlogs = () => async (dispatch) => {
 export const getBlogBySearch = (searchQuery) => async (dispatch) => {
     try{
         const { data: { data } } = await api.fetchBlogsBySearch(searchQuery); // fetch the blogs from the backend
-        console.log(data);
-        // dispatch({ type: FETCH_ALL, payload: data }); // dispatch the action to the reducer
+        // console.log(data);
+        dispatch({ type: FETCH_BY_SEARCH, payload: data }); // dispatch the action to the reducer
     } catch (error) {
         console.log(error);
     }

@@ -43,7 +43,7 @@ const AuthForm = () => {
           </div>
           <div className="overlay-panel overlay-right">
             <h1>Hello, Friend!</h1>
-            <p>Join BloggedIt and start crafting your digital narrative today. Unleash your stories, one post at a time.</p>
+            <p>Join BloggedIt and start crafting your digital narrative today. Unleash your stories, one B at a time.</p>
             <button className="ghost" onClick={handleSignUpClick}>
               Sign Up
             </button>

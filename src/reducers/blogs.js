@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE} from '../constants/actionTypes';
+import { FETCH_ALL, CREATE, UPDATE, DELETE, FETCH_BY_SEARCH} from '../constants/actionTypes';
 
 export default (blogs = [], action) => {
     switch (action.type) {
@@ -6,6 +6,9 @@ export default (blogs = [], action) => {
             return blogs.filter((blog) => blog._id !== action.payload);
             
         case FETCH_ALL:
+            return action.payload;
+
+        case FETCH_BY_SEARCH:
             return action.payload;
 
         case CREATE:
