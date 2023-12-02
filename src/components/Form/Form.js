@@ -12,12 +12,13 @@ import { createBlog, updateBlog} from "../../actions/blogs";
 
 const Form = ({ currentId, setCurrentId}) => {
     const [blogData, setBlogData] = useState({ 
-        creator: '', 
         title: '', 
         message: '', 
         tags: '', 
         selectedFile: '' 
     });
+
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     const blog = useSelector((state) => currentId ? state.blogs.find((b) => b._id === currentId) : null);
 
@@ -32,18 +33,27 @@ const Form = ({ currentId, setCurrentId}) => {
         e.preventDefault();
 
         if(currentId) {
-            dispatch(updateBlog(currentId, blogData));
+            dispatch(updateBlog(currentId, {...blogData, name: user?.result?.name}));
         } else{
-            dispatch(createBlog(blogData));
+            dispatch(createBlog({...blogData, name: user?.result?.name}));
         }
 
         clear();
     };
 
+    if(!user?.result?.name) {
+        return (
+            <Paper className={classes.paper}>
+                <Typography variant="h6" align="center">
+                    Please Sign In to create your own blogs and like other's blogs.
+                </Typography>
+            </Paper>
+        );
+    }
+
     const clear = () => {
         setCurrentId(null);
         setBlogData({ 
-            creator: '', 
             title: '', 
             message: '', 
             tags: '', 
@@ -55,14 +65,6 @@ const Form = ({ currentId, setCurrentId}) => {
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Typography variant="h6">{currentId ? 'Editing' : 'Creating' } a Blog</Typography>
-                <TextField 
-                    name="creator" 
-                    variant="outlined" 
-                    label="Creator" 
-                    fullWidth 
-                    value={ blogData.creator }
-                    onChange={ (e) => setBlogData({ ...blogData, creator: e.target.value }) }
-                    />
                 <TextField 
                     name="title" 
                     variant="outlined" 

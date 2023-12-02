@@ -1,44 +1,32 @@
-import React, {useState, useEffect} from 'react';
-import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import {Container} from '@material-ui/core';
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
+import {GoogleOAuthProvider} from '@react-oauth/google'
 
-
-import blogged from './images/img.jpg';
-
-import {getBlogs} from './actions/blogs';
-import Blogs from './components/Blogs/Blogs';
-import Form from './components/Form/Form';
-import useStyles from './styles';
+import Navbar from './components/Navbar/Navbar';
+import Home from './components/Home/Home';
+import Auth from './components/Auth/Auth';
+import BlogDetails from './components/BlogDetails/BlogDetails';
 
 const App = () => {
-  const [currentId, setCurrentId] = useState(null);
-  const classes = useStyles();
-  const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem('profile'));
 
-  useEffect(() => {
-    dispatch( getBlogs() );
-  }, [currentId, dispatch]);
 
   return (
-    <Container maxWidth="lg">
-      <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h2" align="center">BloggedIt</Typography>
-        <img className={classes.image} src={blogged} alt="BloggedIt" height="60" />
-      </AppBar>
-      <Grow in>
-        <Container>
-          <Grid className={classes.mainContainer} container justifyContent='space-between' alignItems='stretch' spacing={3}>
-            <Grid item xs={12} sm={7}>
-              <Blogs setCurrentId={setCurrentId}/>
-            </Grid>
-            <Grid item xs={12} sm={5}>
-              <Form currentId={currentId} setCurrentId={setCurrentId}/>
-            </Grid>
-          </Grid>
+    <GoogleOAuthProvider clientId='866479177555-ecp9rn6q9g9ago5tfeqjj6jghik8hfnj.apps.googleusercontent.com'>
+      <BrowserRouter>
+        <Container maxWidth="xl">
+          <Navbar/>
+          <Switch>
+            <Route path="/" exact component={() => <Redirect to="/posts"/>}/>
+            <Route path="/posts" exact component={Home}/> 
+            <Route path="/posts/search" exact component={Home}/>
+            <Route path="/posts/:id" component={BlogDetails}/>
+            <Route path="/auth" exact component={() => (!user) ? <Auth/> : <Redirect to="/posts"/>}/>
+          </Switch>
         </Container>
-      </Grow>
-    </Container>
-
+      </BrowserRouter>
+    </GoogleOAuthProvider>
   );
 };
 
