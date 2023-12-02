@@ -7,7 +7,8 @@ import {useHistory, useLocation} from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
 import useStyles from './styles';
-import blogged from '../../images/img.jpg';
+import blogged from '../../images/img.png';
+import text from '../../images/logo.png';
 
 const Navbar = () => {
   const classes = useStyles();
@@ -37,10 +38,10 @@ const Navbar = () => {
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
-        <div className={classes.brandContainer}>
-          <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">BloggedIt</Typography>
-          <img className={classes.image} src={blogged} alt="BloggedIt" height="60" />
-        </div>
+        <Link to="/" className={classes.brandContainer}>
+          <img className={classes.image} src={text} alt="BloggedIt" height="60px" />
+          <img className={classes.image} src={blogged} alt="BloggedIt" height="40px" />
+        </Link>
         <Toolbar className={classes.toolbar}>
             {user ? (
                 <div className={classes.profile}>

@@ -1,11 +1,14 @@
-import { FETCH_ALL, FETCH_BY_SEARCH, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
+import { FETCH_ALL, FETCH_BY_SEARCH, CREATE, UPDATE, START_LOADING, END_LOADING, DELETE } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 // Action Creators
-export const getBlogs = () => async (dispatch) => { 
+export const getBlogs = (page) => async (dispatch) => { 
     try {
-        const { data } = await api.fetchBlogs(); // fetch the blogs from the backend
+        dispatch({ type: START_LOADING }); // dispatch the loading action to the reducer
+        const { data } = await api.fetchBlogs(page); // fetch the blogs from the backend
+        // console.log(data);
         dispatch({ type: FETCH_ALL, payload: data }); // dispatch the action to the reducer
+        dispatch({ type: END_LOADING }); // dispatch the end loading action to the reducer
     } catch (error) {
         console.log(error.message);
     }
@@ -13,9 +16,11 @@ export const getBlogs = () => async (dispatch) => {
 
 export const getBlogBySearch = (searchQuery) => async (dispatch) => {
     try{
+        dispatch({ type: START_LOADING }); // dispatch the loading action to the reducer
         const { data: { data } } = await api.fetchBlogsBySearch(searchQuery); // fetch the blogs from the backend
         // console.log(data);
         dispatch({ type: FETCH_BY_SEARCH, payload: data }); // dispatch the action to the reducer
+        dispatch({ type: END_LOADING }); // dispatch the end loading action to the reducer
     } catch (error) {
         console.log(error);
     }
@@ -23,8 +28,10 @@ export const getBlogBySearch = (searchQuery) => async (dispatch) => {
 
 export const createBlog = (blog) => async (dispatch) => {
     try {
+        dispatch({ type: START_LOADING }); // dispatch the loading action to the reducer
         const { data } = await api.createBlog(blog); // create the blog in the backend
         dispatch({ type: CREATE, payload: data }); // dispatch the action to the reducer
+        dispatch({ type: END_LOADING }); // dispatch the end loading action to the reducer
     } catch (error) {
         console.log(error.message);
     }
@@ -32,6 +39,7 @@ export const createBlog = (blog) => async (dispatch) => {
 
 export const updateBlog = (id, blog) => async (dispatch) => {
     try {
+        
         const { data } = await api.updateBlog(id, blog); // update the blog in the backend
         dispatch({ type: UPDATE, payload: data }); // dispatch the action to the reducer
     } catch (error) {

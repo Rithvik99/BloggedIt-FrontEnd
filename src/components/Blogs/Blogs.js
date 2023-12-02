@@ -6,13 +6,13 @@ import Blog from "./Blog/Blog";
 import useStyles from './styles';
 
 const Blogs = ({ setCurrentId }) => {
-    const blogs = useSelector((state) => state.blogs);
+    const {blogs, isLoading} = useSelector((state) => state.blogs);
     const classes = useStyles();
 
-    console.log(blogs);
+    if(!blogs.length && !isLoading) return 'No Blogs';
 
     return (
-        !blogs.length ? <CircularProgress /> : (
+        isLoading ? <CircularProgress /> : (
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
                 {blogs.map((blog) => (
                     <Grid key={blog._id} item xs={12} sm={12} md={6} lg={3}>
