@@ -11,6 +11,7 @@ API.interceptors.request.use((req) => {
 });
 
 export const fetchBlogs = (page) => API.get(`/blogs?page=${page}`); // fetch blogs from backend
+export const fetchBlog = (id) => API.get(`/blogs/${id}`); // fetch blog from backend
 export const fetchBlogsBySearch = (searchQuery) => API.get(`/blogs/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`); // fetch blogs from backend by search query
 export const createBlog = (newBlog) => API.post('/blogs', newBlog); // create blog in backend
 export const updateBlog = (id, updatedBlog) => API.patch(`/blogs/${id}`, updatedBlog); // update blog in backend

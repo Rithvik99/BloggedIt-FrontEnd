@@ -1,4 +1,4 @@
-import { FETCH_ALL, FETCH_BY_SEARCH, CREATE, UPDATE, START_LOADING, END_LOADING, DELETE } from '../constants/actionTypes';
+import { FETCH_ALL, FETCH_POST, FETCH_BY_SEARCH, CREATE, UPDATE, START_LOADING, END_LOADING, DELETE } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 // Action Creators
@@ -8,6 +8,18 @@ export const getBlogs = (page) => async (dispatch) => {
         const { data } = await api.fetchBlogs(page); // fetch the blogs from the backend
         // console.log(data);
         dispatch({ type: FETCH_ALL, payload: data }); // dispatch the action to the reducer
+        dispatch({ type: END_LOADING }); // dispatch the end loading action to the reducer
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const getBlog = (id) => async (dispatch) => { 
+    try {
+        dispatch({ type: START_LOADING }); // dispatch the loading action to the reducer
+        const { data } = await api.fetchBlog(id); // fetch the blogs from the backend
+        // console.log(data);
+        dispatch({ type: FETCH_POST, payload: data }); // dispatch the action to the reducer
         dispatch({ type: END_LOADING }); // dispatch the end loading action to the reducer
     } catch (error) {
         console.log(error.message);
