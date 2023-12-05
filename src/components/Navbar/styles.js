@@ -32,10 +32,14 @@ export default makeStyles((theme) => ({
       width: 'auto',
     },
   },
+  profileD:{
+    display: 'flex',
+    alignContent: 'center',
+    alignItems: 'center',
+  },
   profile: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '400px',
     alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
       width: 'auto',
@@ -48,12 +52,32 @@ export default makeStyles((theme) => ({
   },
   userName: {
     display: 'flex',
+    marginLeft: '10px',
+    width: '200px',
     alignItems: 'center',
     textAlign: 'center',
   },
   brandContainer: {
     display: 'flex',
     alignItems: 'center',
+  },
+  searchButton: {
+    marginLeft: '10px',
+    alignItems: 'center',
+    diaplay: 'flex',
+    textAlign: 'center',
+    width: '100px',
+    height: '40px',
+    marginRight: '20px',
+  },
+  blogButton: {
+    marginLeft: '10px',
+    alignItems: 'center',
+    textAlign: 'center',
+    width: '120px',
+    height: '40px',
+    display: 'flex',
+    marginRight: '20px',
   },
   purple: {
     color: theme.palette.getContrastText(deepPurple[500]),

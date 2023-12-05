@@ -91,11 +91,6 @@ const Auth = () => {
                     {isSignup ? 'Sign Up' : 'Sign In'}
                 </Button>
                 <div style={{ display: 'flex', justifyContent: 'center', width:'100%' }}>
-                    <GoogleLogin
-                        fullWidth
-                        onSuccess={googleSuccess}
-                        onError={googleFailure}
-                    />
                 </div>
                 <Grid container justifyContent="flex-end">
                     <Grid item>
