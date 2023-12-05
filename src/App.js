@@ -6,6 +6,7 @@ import {GoogleOAuthProvider} from '@react-oauth/google'
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
+import BlogSearch from './components/BlogSearch/BlogSearch';
 import BlogDetails from './components/BlogDetails/BlogDetails';
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={() => <Redirect to="/blogs"/>}/>
             <Route path="/blogs" exact component={Home}/> 
-            <Route path="/blogs/search" exact component={Home}/>
+            <Route path="/blogs/search" exact component={BlogSearch}/>
             <Route path="/blogs/:id" component={BlogDetails}/>
             <Route path="/auth" exact component={() => (!user) ? <Auth/> : <Redirect to="/blogs"/>}/>
           </Switch>

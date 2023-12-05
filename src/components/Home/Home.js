@@ -53,27 +53,7 @@ const Home = () => {
                     <Blogs setCurrentId={setCurrentId}/>
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                    <AppBar className={classes.appBarSearch} position="static" color="inherit">
-                        <TextField 
-                            name="search" 
-                            variant="outlined" 
-                            label="Search Blogs" 
-                            fullWidth 
-                            value={search} 
-                            onKeyPress={(e) => {hanleKeyPress(e)}}
-                            onChange={(e) => {
-                                setSearch(e.target.value);
-                            }}/>
-                        <ChipInput 
-                            style={{ margin: '10px 0' }}
-                            value={tags}
-                            onAdd={handleAdd}
-                            onDelete={handleDelete}
-                            label="Search Tags"
-                            variant="outlined"
-                        />
-                        <Button onClick={searchBlogs} className={classes.searchButton} variant="contained" color="primary">Search</Button>
-                    </AppBar>
+                    
                     <Form currentId={currentId} setCurrentId={setCurrentId}/>
                     {(!searchQuery && !tags.length) && (
                         <Paper elevation={6} className={classes.pagination}>

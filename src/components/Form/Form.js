@@ -42,7 +42,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <Paper className={classes.paper} elevation={6}>
         <Typography variant="h6" align="center">
-          Please Sign In to create your own memories and like other's memories.
+          Please Sign In to create your own blogs and like other's blogs.
         </Typography>
       </Paper>
     );
@@ -59,7 +59,7 @@ const Form = ({ currentId, setCurrentId }) => {
   return (
     <Paper className={classes.paper} elevation={6}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Editing "${blog?.title}"` : 'Creating a Memory'}</Typography>
+        <Typography variant="h6">{currentId ? `Editing "${blog?.title}"` : 'Creating a Blog'}</Typography>
         <TextField name="title" variant="outlined" label="Title" fullWidth value={blogData.title} onChange={(e) => setBlogData({ ...blogData, title: e.target.value })} />
         <TextField name="message" variant="outlined" label="Message" fullWidth multiline rows={4} value={blogData.message} onChange={(e) => setBlogData({ ...blogData, message: e.target.value })} />
         <div style={{ padding: '5px 0', width: '94%' }}>
