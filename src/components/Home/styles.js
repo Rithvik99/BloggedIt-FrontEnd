@@ -11,4 +11,8 @@ export default makeStyles((theme) => ({
       flexDirection: 'column-reverse',
     },
   },
+  addButton : {
+    height: '100%',
+    width : '100%'
+  }
 }));

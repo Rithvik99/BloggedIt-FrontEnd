@@ -4,6 +4,7 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
+import EditIcon from '@material-ui/icons/Edit';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom';
@@ -11,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 import { likeBlog, deleteBlog } from '../../../actions/blogs';
 import useStyles from './styles';
 
-const Blog = ({ blog, setCurrentId }) => {
+const Blog = ({ blog, setCurrentId ,setDisplayForm}) => {
   const user = JSON.parse(localStorage.getItem('profile'));
   const [likes, setLikes] = useState(blog?.likes);
   const dispatch = useDispatch();
@@ -69,11 +70,12 @@ const Blog = ({ blog, setCurrentId }) => {
             onClick={(e) => {
               e.stopPropagation();
               setCurrentId(blog._id);
+              setDisplayForm(true);
             }}
             style={{ color: 'white' }}
             size="small"
           >
-            <MoreHorizIcon fontSize="default" />
+          <EditIcon fontSize='small'/>
           </Button>
         </div>
         )}

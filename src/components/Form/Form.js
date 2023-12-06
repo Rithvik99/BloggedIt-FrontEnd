@@ -8,7 +8,7 @@ import ChipInput from 'material-ui-chip-input';
 import { createBlog, updateBlog } from '../../actions/blogs';
 import useStyles from './styles';
 
-const Form = ({ currentId, setCurrentId }) => {
+const Form = ({ currentId, setCurrentId , setDisplayForm}) => {
   const [blogData, setBlogData] = useState({ title: '', message: '', tags: [], selectedFile: '' });
   const blog = useSelector((state) => (currentId ? state.blogs.blogs.find((message) => message._id === currentId) : null));
   const dispatch = useDispatch();
@@ -30,9 +30,11 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId === 0) {
+      setDisplayForm(false)
       dispatch(createBlog({ ...blogData, name: user?.result?.name }, history));
       clear();
     } else {
+      setDisplayForm(false)
       dispatch(updateBlog(currentId, { ...blogData, name: user?.result?.name }));
       clear();
     }
