@@ -61,7 +61,7 @@ const Blog = ({ blog, setCurrentId ,setDisplayForm}) => {
       >
         <CardMedia className={classes.media} image={blog.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} title={blog.title} />
         <div className={classes.overlay}>
-          <Typography variant="h6">{blog.title}</Typography>
+          <Typography variant="h6">{blog.name}</Typography>
           <Typography variant="body2">{moment(blog.createdAt).fromNow()}</Typography>
         </div>
         {(user?.result?._id === blog?.creator) && (
@@ -79,7 +79,7 @@ const Blog = ({ blog, setCurrentId ,setDisplayForm}) => {
           </Button>
         </div>
         )}
-        <Typography className={classes.title} gutterBottom variant="h5" component="h2">{blog.name}</Typography>
+        <Typography className={classes.title} gutterBottom variant="h5" component="h2">{blog.title}</Typography>
         <div className={classes.details}>
           <Typography variant="body2" color="textSecondary" component="h2">{blog.tags.map((tag) => `#${tag} `)}</Typography>
         </div>

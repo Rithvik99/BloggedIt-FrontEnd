@@ -62,7 +62,14 @@ const Navbar = () => {
                 <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
                 </div>
             ) : (
+                <div className={classes.profile}>
+                <Tooltip title="Search">
+                  <IconButton onClick={handleSearchIconClick}>
+                      <SearchIcon />
+                  </IconButton>
+                </Tooltip>
                 <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
+                </div>
             )}
         </Toolbar>
 
