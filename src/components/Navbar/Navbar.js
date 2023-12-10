@@ -46,7 +46,7 @@ const Navbar = () => {
     <AppBar className={classes.appBar} position="static" color="inherit">
         <Link to="/" className={classes.brandContainer}>
           <img className={classes.image} src={text} alt="BloggedIt" height="60px" />
-          <img className={classes.image} src={blogged} alt="BloggedIt" height="40px" />
+          <img className={classes.image} src={blogged} alt="BloggedIt" height="50px" />
         </Link>
         <Toolbar className={classes.toolbar}>
             {user ? (
