@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, TextField, Button, Paper, Grid } from '@material-ui/core';
+import { AppBar, TextField, Button, Paper, Grid,Typography } from '@material-ui/core';
 import ChipInput from 'material-ui-chip-input';
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation, Component } from 'react-router-dom';
@@ -50,6 +50,7 @@ const BlogSearch = () => {
     <div className= {classes.container}>
       <div className= {classes.searchcontainer}>
         <AppBar className={classes.appBarSearch} position="static" color="inherit">
+        <Typography variant="h5"> Dive into a world of informative and engaging blogs.</Typography>
           <TextField
             className= {classes.searchtext}
             name="search"

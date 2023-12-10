@@ -2,13 +2,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   appBarSearch: {
-    borderRadius: 4,
-    marginBottom: theme.spacing(2),
+    borderRadius: 20,
+    marginBottom: theme.spacing(4),
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
+    
   },
+  
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -16,11 +18,13 @@ export default makeStyles((theme) => ({
   },
   tag: {
     margin: theme.spacing(1),
+    marginBottom: theme.spacing(2),
     width: '90%',
     maxWidth: 400, 
   },
   searchtext: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
+    marginTop: theme.spacing(4),
     width: '90%',
     maxWidth: 400, 
   },

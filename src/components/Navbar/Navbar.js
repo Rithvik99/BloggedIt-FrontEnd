@@ -39,7 +39,6 @@ const Navbar = () => {
     setUser(null);
   };
   const handleSearchIconClick = () => {
-    
     history.push('/blogs/search');
   };
 

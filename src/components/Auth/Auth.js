@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Avatar, Button, Container, Grid, Paper, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import PersonAdd from '@material-ui/icons/PersonAdd';
 import {GoogleLogin, googleLogout} from '@react-oauth/google';
 import { useDispatch } from 'react-redux';
 import jwt_decode from "jwt-decode";
@@ -67,10 +68,12 @@ const Auth = () => {
   return (
     <Container component="main" maxWidth="xs">
         <Paper className={classes.paper} elevation={3}>
+            
             <Avatar className={classes.avatar}>
-                <LockOutlinedIcon/>
+                {isSignup ? <PersonAdd/> : <LockOutlinedIcon/> }
+                
             </Avatar>
-            <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
+            <Typography variant="h5">{isSignup ? 'Create Your Account' : 'Welcome Back'}</Typography>
             <form className={classes.form} onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
                     {
@@ -82,7 +85,7 @@ const Auth = () => {
                         )
                     }
                     <Input name="email" label="Email Address" handleChange={handleChange} type="email"/>
-                    <Input name="password" label="Password" handleChange={handleChange} type={ showPassword ? "text" : "password"} handleShowPassword={handleShowPassword}/>
+                    <Input name="password" label="Password" handleChange={handleChange} type={ showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} isSignup={isSignup}/>
                     {
                         isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password"/>
                     }
