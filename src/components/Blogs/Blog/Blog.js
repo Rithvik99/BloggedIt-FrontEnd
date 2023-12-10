@@ -72,7 +72,7 @@ const Blog = ({ blog, setCurrentId ,setDisplayForm}) => {
               setCurrentId(blog._id);
               setDisplayForm(true);
             }}
-            style={{ color: 'white' }}
+            style={{ color: 'white', paddingLeft: '100px'}}
             size="small"
           >
           <EditIcon fontSize='small'/>

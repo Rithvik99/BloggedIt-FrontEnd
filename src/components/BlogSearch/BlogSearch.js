@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, TextField, Button, Paper, Grid,Typography } from '@material-ui/core';
+import { AppBar, TextField, Button, Paper, Grid,Typography,FormHelperText } from '@material-ui/core';
 import ChipInput from 'material-ui-chip-input';
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation, Component } from 'react-router-dom';
@@ -70,6 +70,7 @@ const BlogSearch = () => {
             label="Search Tags"
             variant="outlined"
           />
+          <FormHelperText className={classes.helptext}>Press Enter after entering your tag</FormHelperText>
           <Button onClick={searchBlogs} className={classes.searchButton} variant="contained" color="primary">Search</Button>
         </AppBar>
       </div>

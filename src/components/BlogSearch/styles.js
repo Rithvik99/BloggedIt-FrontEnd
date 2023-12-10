@@ -18,7 +18,7 @@ export default makeStyles((theme) => ({
   },
   tag: {
     margin: theme.spacing(1),
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(1),
     width: '90%',
     maxWidth: 400, 
   },
@@ -27,6 +27,9 @@ export default makeStyles((theme) => ({
     marginTop: theme.spacing(4),
     width: '90%',
     maxWidth: 400, 
+  },
+  helptext: {
+    marginBottom: theme.spacing(2),
   },
   blogsContainer: {
     display: 'flex',
