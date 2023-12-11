@@ -43,7 +43,7 @@ pipeline{
                 }
             }
         }
-        /*
+        
         stage('Ansible Deploying the Docker Image'){
             steps{
                 echo 'Deploying the Docker Image'
@@ -56,6 +56,6 @@ pipeline{
                 playbook: 'Deployment/playbook.yml',
                 sudoUser: null
             }
-        }*/
+        }
     }
 }
