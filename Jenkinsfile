@@ -35,7 +35,7 @@ pipeline{
                 }
             }
         }
-        stage('Clean docker images'){
+        /*stage('Clean docker images'){
             steps{
                 script{
                     sh 'docker container prune -f'
@@ -55,6 +55,6 @@ pipeline{
                 playbook: 'Deployment/playbook.yml',
                 sudoUser: null
             }
-        }
+        }*/
     }
 }
