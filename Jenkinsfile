@@ -8,7 +8,7 @@ pipeline{
         stage('Git Clone'){
             steps{
                 git branch: 'main',
-                url:'https://github.com/sashank369/BloggedIt-BackEnd.git'
+                url:'https://github.com/Rithvik99/BloggedIt-FrontEnd'
             }
         }
         /*stage('Test'){
