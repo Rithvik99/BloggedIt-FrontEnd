@@ -15,20 +15,30 @@ const Form = ({ currentId, setCurrentId , setDisplayForm}) => {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem('profile'));
   const history = useHistory();
+  const [submitEnabled, setSubmitEnabled] = useState(false);
 
   const clear = () => {
     setCurrentId(0);
     setBlogData({ title: '', message: '', tags: [], selectedFile: '' });
+    setSubmitEnabled(false);
   };
+  const goBack= () => {
+    setDisplayForm(false)
+  }
 
   useEffect(() => {
     if (!blog?.title) clear();
     if (blog) setBlogData(blog);
   }, [blog]);
 
+  useEffect(() => {
+    setSubmitEnabled(blogData.title.trim() !== '' && blogData.message.trim() !== '');
+  }, [blogData]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+     
+    if (!submitEnabled) return;
     if (currentId === 0) {
       setDisplayForm(false)
       dispatch(createBlog({ ...blogData, name: user?.result?.name }, history));
@@ -60,6 +70,9 @@ const Form = ({ currentId, setCurrentId , setDisplayForm}) => {
 
   return (
     <Paper className={classes.paper} elevation={6}>
+      <div className={classes.backArrow} onClick={() => goBack()}>
+        &larr; 
+      </div>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <Typography variant="h6">{currentId ? `Editing "${blog?.title}"` : 'Create a Blog'}</Typography>
         <TextField name="title" variant="outlined" label="Title" fullWidth value={blogData.title} onChange={(e) => setBlogData({ ...blogData, title: e.target.value })} />
@@ -77,7 +90,7 @@ const Form = ({ currentId, setCurrentId , setDisplayForm}) => {
           <FormHelperText className={classes.helptext}>Press Enter after entering your tag</FormHelperText>
         </div>
         <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setBlogData({ ...blogData, selectedFile: base64 })} /></div>
-        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
+        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth disabled={!submitEnabled}>Submit</Button>
         <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
       </form>
     </Paper>

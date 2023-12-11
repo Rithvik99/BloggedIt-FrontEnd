@@ -11,4 +11,16 @@ export default makeStyles((theme) => ({
   actionDiv: {
     textAlign: 'center',
   },
+  centered: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '20vh', 
+  },
+  centeredcircular: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '60vh', 
+  },
 }));

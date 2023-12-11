@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import { Avatar, Button, Container, Grid, Paper, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import PersonAdd from '@material-ui/icons/PersonAdd';
-import {GoogleLogin, googleLogout} from '@react-oauth/google';
 import { useDispatch } from 'react-redux';
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
@@ -47,31 +46,12 @@ const Auth = () => {
     setShowPassword(false);
   };
 
-  const googleSuccess = async (res) => {
-      const result = jwt_decode(res.credential); // optional chaining
-      const token = res.credential;
-      
-      try {
-          dispatch({ type: 'AUTH', data: { result, token } });
-          history.push('/');
-      } catch (error) {
-          console.log(error);
-      }
-    console.log(res)
-  }
-
-  const googleFailure = (error) => {
-    console.log(error);
-    console.log("Google Sign In was unsuccessful. Try again later");
-  }
 
   return (
     <Container component="main" maxWidth="xs">
         <Paper className={classes.paper} elevation={3}>
-            
             <Avatar className={classes.avatar}>
                 {isSignup ? <PersonAdd/> : <LockOutlinedIcon/> }
-                
             </Avatar>
             <Typography variant="h5">{isSignup ? 'Create Your Account' : 'Welcome Back'}</Typography>
             <form className={classes.form} onSubmit={handleSubmit}>

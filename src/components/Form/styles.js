@@ -15,9 +15,14 @@ export default makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
   },
+  backArrow: {
+    cursor: 'pointer',
+    // marginBottom: theme.spacing(1), 
+    fontSize: '2rem', 
+  },
   fileInput: {
     width: '97%',
-    margin: '10px 0',
+    margin: '10px ',
   },
   helptext: {
     marginBottom: theme.spacing(2),
