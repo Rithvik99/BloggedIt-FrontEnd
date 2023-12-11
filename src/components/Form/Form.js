@@ -23,7 +23,8 @@ const Form = ({ currentId, setCurrentId , setDisplayForm}) => {
     setSubmitEnabled(false);
   };
   const goBack= () => {
-    setDisplayForm(false)
+    setDisplayForm(false);
+    clear();
   }
 
   useEffect(() => {
