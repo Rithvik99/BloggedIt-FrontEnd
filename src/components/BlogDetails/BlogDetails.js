@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react'
-import { Paper, Typography, CircularProgress, Divider } from '@material-ui/core'
-import { useDispatch, useSelector } from 'react-redux'
+import { CircularProgress, Divider, Paper, Typography } from '@material-ui/core'
 import moment from 'moment'
-import { useParams, useHistory } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, useParams } from 'react-router-dom'
 
-import useStyles from './styles'
 import { getBlog } from '../../actions/blogs'
+import useStyles from './styles'
+import CommentsSection from './CommentsSection'
 
 const BlogDetails = () => {
 
@@ -40,6 +41,8 @@ const BlogDetails = () => {
           <Divider style={{ margin: '20px 0' }} />
           <Typography variant="h6">Created by: {blog.name}</Typography>
           <Typography variant="body1">{moment(blog.createdAt).fromNow()}</Typography>
+          <Divider style={{ margin: '20px 0' }} />
+          <CommentsSection blog={blog}/>
           <Divider style={{ margin: '20px 0' }} />
         </div>
         <div className={classes.imageSection}>

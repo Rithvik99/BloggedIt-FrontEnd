@@ -17,6 +17,7 @@ export const createBlog = (newBlog) => API.post('/blogs', newBlog); // create bl
 export const updateBlog = (id, updatedBlog) => API.patch(`/blogs/${id}`, updatedBlog); // update blog in backend
 export const deleteBlog = (id) => API.delete(`/blogs/${id}`); // delete blog in backend
 export const likeBlog = (id) => API.patch(`/blogs/${id}/likeBlog`); // like blog in backend
+export const commentBlog = (value, id) => API.post(`/blogs/${id}/commentBlog`, { value }); // comment blog in backend
 
 export const signIn = (formData) => API.post('/user/signin', formData); // sign in user in backend
 export const signUp = (formData) => API.post('/user/signup', formData); // sign up user in backend
