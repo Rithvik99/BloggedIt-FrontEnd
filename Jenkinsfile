@@ -35,7 +35,7 @@ pipeline{
                 }
             }
         }
-        /*stage('Clean docker images'){
+        stage('Clean docker images'){
             steps{
                 script{
                     sh 'docker container prune -f'
@@ -43,6 +43,7 @@ pipeline{
                 }
             }
         }
+        /*
         stage('Ansible Deploying the Docker Image'){
             steps{
                 echo 'Deploying the Docker Image'
