@@ -1,6 +1,6 @@
 pipeline{
     environment{
-        registry = "sashank369/bloback"
+        registry = "sashank369/front"
         dockerImage = ""
     }
     agent any
