@@ -1,6 +1,6 @@
 pipeline{
     environment{
-        registry = "sashank369/front"
+        registry = "rithvikramasani/blofront"
         dockerImage = ""
     }
     agent any
@@ -9,14 +9,6 @@ pipeline{
             steps{
                 git branch: 'main',
                 url:'https://github.com/Rithvik99/BloggedIt-FrontEnd'
-            }
-        }
-        /*stage('Test'){
-            steps {
-                echo 'Building..'
-                sh 'npm install'
-                echo 'Testing..'
-                sh 'npm test'
             }
         }*/
         stage('Building image') {

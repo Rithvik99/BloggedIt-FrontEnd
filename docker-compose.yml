@@ -1,0 +1,6 @@
+version: '3.5'
+services:
+  frontend:
+    image: rithvikramasani/blofront:latest
+    ports:
+      - '3000:3000'

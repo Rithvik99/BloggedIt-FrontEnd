@@ -8,16 +8,11 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Copy the current directory contents into the container at /app
 COPY . .
 
-# Make port 4000 available to the world outside this container
-EXPOSE 5000
-
-# Do tests
-CMD ["npm", "test"]
-
-# Define the command to start the application
-CMD ["node", "index.js"]
+# Use port 5000 for the node server on the container
+EXPOSE 3000
+CMD ["npm", "start"]
