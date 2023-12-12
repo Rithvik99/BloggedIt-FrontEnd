@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('Stage 1: Git Clone'){
             steps{
-                git branch: 'main',
+                git branch: 'master',
                 url: 'https://github.com/Rithvik99/BloggedIt-FrontEnd.git'
             }
         }
