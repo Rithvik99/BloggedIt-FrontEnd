@@ -1,16 +1,18 @@
 pipeline{
     environment{
-        registry = "rithvikramasani/blofront"
+        registry = "rithvikramasani/bloback"
         dockerImage = ""
+        PORT = 3001
+        CONNECTION_URL = "mongodb+srv://rithvikramasani:rithvikramasani@cluster0.sgvjxgt.mongodb.net/"
     }
     agent any
     stages{
-        stage('Git Clone'){
+        stage('Stage 1: Git Clone'){
             steps{
                 git branch: 'main',
-                url:'https://github.com/Rithvik99/BloggedIt-FrontEnd'
+                url: 'https://github.com/Rithvik99/BloggedIt-FrontEnd.git'
             }
-        }*/
+        }
         stage('Building image') {
             steps{
                 script {
@@ -27,15 +29,6 @@ pipeline{
                 }
             }
         }
-        stage('Clean docker images'){
-            steps{
-                script{
-                    sh 'docker container prune -f'
-                    sh 'docker image prune -f'
-                }
-            }
-        }
-        
         stage('Ansible Deploying the Docker Image'){
             steps{
                 echo 'Deploying the Docker Image'
