@@ -1,9 +1,9 @@
 pipeline{
     environment{
-        registry = "rithvikramasani/blofront"
+        registry = credentials('FrontEndRegistry')
         dockerImage = ""
         PORT = 5000
-        CONNECTION_URL = "mongodb+srv://rithvikramasani:rithvikramasani@cluster0.sgvjxgt.mongodb.net/"
+        CONNECTION_URL = credentials('CONNECTION_URL')
     }
     agent any
     stages{
@@ -18,6 +18,14 @@ pipeline{
                 script {
                 dockerImage = docker.build registry + ":latest"
                 }
+            }
+        }
+        stage('Test'){
+            steps {
+                echo 'Building..'
+                sh 'npm install --legacy-peer-deps'
+                echo 'Testing..'
+                sh 'npm test'
             }
         }
         stage('Deploy Image') {
