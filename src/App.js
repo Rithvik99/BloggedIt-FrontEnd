@@ -1,13 +1,13 @@
+import { Container } from '@material-ui/core';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import React from 'react';
-import {Container} from '@material-ui/core';
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
-import {GoogleOAuthProvider} from '@react-oauth/google'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
-import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
-import BlogSearch from './components/BlogSearch/BlogSearch';
 import BlogDetails from './components/BlogDetails/BlogDetails';
+import BlogSearch from './components/BlogSearch/BlogSearch';
+import Home from './components/Home/Home';
+import Navbar from './components/Navbar/Navbar';
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -20,7 +20,7 @@ const App = () => {
           <Navbar/>
           <Switch>
             <Route path="/" exact component={() => <Redirect to="/blogs"/>}/>
-            <Route path="/blogs" exact component={Home}/> 
+            <Route path="/blogs" exact component={Home}/>
             <Route path="/blogs/search" exact component={BlogSearch}/>
             <Route path="/blogs/:id" component={BlogDetails}/>
             <Route path="/auth" exact component={() => (!user) ? <Auth/> : <Redirect to="/blogs"/>}/>

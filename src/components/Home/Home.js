@@ -29,6 +29,7 @@ const Home = () => {
     
 
     return (
+        <div data-testid="home-1">
         <Grow in>
             <Container maxWidth="xl">
                 <Grid container justifyContent='space-between' alignItems='stretch' spacing={3} className={classes.gridContainer}>
@@ -36,14 +37,14 @@ const Home = () => {
                     <Blogs setCurrentId={setCurrentId} setDisplayForm={setDisplayForm}/>
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                    {!displayForm && ( 
+                    {!displayForm && (
                         <Paper elevation={6} className={classes.addButtonContainer}>
                             <Button variant="contained" color="primary" className={classes.addButton} onClick={handleAddBlogClick}>
                             Add Blog
                             </Button>
                         </Paper>
                     )}
-                    {displayForm && ( 
+                    {displayForm && (
                         <Paper elevation={6} className={classes.formContainer}>
                             <Form currentId={currentId} setCurrentId={setCurrentId} setDisplayForm={setDisplayForm} />
                         </Paper>
@@ -58,6 +59,7 @@ const Home = () => {
                 </Grid>
             </Container>
         </Grow>
+        </div>
     )
 }
 
