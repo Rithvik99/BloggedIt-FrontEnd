@@ -22,6 +22,7 @@ const Form = ({ currentId, setCurrentId , setDisplayForm}) => {
     setBlogData({ title: '', message: '', tags: [], selectedFile: '' });
     setSubmitEnabled(false);
   };
+  
   const goBack= () => {
     setDisplayForm(false);
     clear();

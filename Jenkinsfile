@@ -2,7 +2,7 @@ pipeline{
     environment{
         registry = "rithvikramasani/blofront"
         dockerImage = ""
-        PORT = 3001
+        PORT = 5000
         CONNECTION_URL = "mongodb+srv://rithvikramasani:rithvikramasani@cluster0.sgvjxgt.mongodb.net/"
     }
     agent any
