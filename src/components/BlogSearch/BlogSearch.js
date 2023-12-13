@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { AppBar, TextField, Button, Paper, Grid,Typography,FormHelperText } from '@material-ui/core';
+import React, {useState } from 'react';
+import { AppBar, TextField, Button,Grid,Typography,FormHelperText } from '@material-ui/core';
 import ChipInput from 'material-ui-chip-input';
 import { useDispatch } from 'react-redux';
-import { useHistory, useLocation, Component } from 'react-router-dom';
+import { useHistory, useLocation} from 'react-router-dom';
 import useStyles from './styles';
 import { getBlogBySearch } from '../../actions/blogs';
-import Pagination from '../Pagination/Pagination';
 import Blogs from '../Blogs/Blogs';
-import { SEARCH_INITIATE } from '../../constants/actionTypes'
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -23,7 +21,6 @@ const BlogSearch = () => {
   const [currentId, setCurrentId] = useState(null);
   const query = useQuery();
   const history = useHistory();
-  const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery');
   const [bp, setbp] = useState(false);
 
@@ -37,11 +34,6 @@ const BlogSearch = () => {
     }
   };
 
-  // const handleKeyPress = (e) => {
-  //   if (e.keyCode === 13) {
-  //     searchBlogs();
-  //   }
-  // };
 
   const handleAdd = (tag) => setTags([...tags, tag]);
   const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
