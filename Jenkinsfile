@@ -1,9 +1,9 @@
 pipeline{
     environment{
-        registry = "rithvikramasani/blofront"
+        registry = credentials('FrontEndRegistry')
         dockerImage = ""
         PORT = 5000
-        CONNECTION_URL = "mongodb+srv://rithvikramasani:rithvikramasani@cluster0.sgvjxgt.mongodb.net/"
+        CONNECTION_URL = credentials('CONNECTION_URL')
     }
     agent any
     stages{
@@ -11,6 +11,14 @@ pipeline{
             steps{
                 git branch: 'master',
                 url: 'https://github.com/Rithvik99/BloggedIt-FrontEnd.git'
+            }
+        }
+        stage('Test'){
+            steps {
+                echo 'Building..'
+                sh 'npm install --legacy-peer-deps'
+                echo 'Testing..'
+                sh 'npm test'
             }
         }
         stage('Building image') {
@@ -39,7 +47,12 @@ pipeline{
                 installation: 'Ansible',
                 inventory: 'Deployment/inventory',
                 playbook: 'Deployment/playbook.yml',
-                sudoUser: null
+                sudoUser: null,
+                extraVars: [
+                    CONNECTION_URL: CONNECTION_URL,
+                    PORT: PORT,
+                    registry: registry
+                ]
             }
         }
     }

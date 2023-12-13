@@ -75,7 +75,7 @@ const BlogSearch = () => {
             <Blogs setCurrentId={setCurrentId}/>
           </Grid>
         </Grid>
-       )}
+      )}
       </div>
     </div>
   );
