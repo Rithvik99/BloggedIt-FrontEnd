@@ -47,7 +47,7 @@ pipeline{
                 installation: 'Ansible',
                 inventory: 'Deployment/inventory',
                 playbook: 'Deployment/playbook.yml',
-                sudoUser: null
+                sudoUser: null,
                 extraVars: [
                     CONNECTION_URL: CONNECTION_URL,
                     PORT: PORT,
