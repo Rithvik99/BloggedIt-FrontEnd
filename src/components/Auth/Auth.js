@@ -3,12 +3,10 @@ import { Avatar, Button, Container, Grid, Paper, Typography } from '@material-ui
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import { useDispatch } from 'react-redux';
-import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
 
 import useStyles from './styles';
 import Input from './Input';
-import Icon from './icon';
 import { signin, signup } from '../../actions/auth';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
