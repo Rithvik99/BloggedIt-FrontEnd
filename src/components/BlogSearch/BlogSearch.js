@@ -1,11 +1,11 @@
-import React, {useState } from 'react';
-import { AppBar, TextField, Button,Grid,Typography,FormHelperText } from '@material-ui/core';
+import { AppBar, Button, FormHelperText, Grid, TextField, Typography } from '@material-ui/core';
 import ChipInput from 'material-ui-chip-input';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory, useLocation} from 'react-router-dom';
-import useStyles from './styles';
+import { useHistory, useLocation } from 'react-router-dom';
 import { getBlogBySearch } from '../../actions/blogs';
 import Blogs from '../Blogs/Blogs';
+import useStyles from './styles';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -44,16 +44,18 @@ const BlogSearch = () => {
         <AppBar className={classes.appBarSearch} position="static" color="inherit">
         <Typography variant="h5"> Dive into a world of informative and engaging blogs.</Typography>
           <TextField
-            className= {classes.searchtext}
+            className={classes.searchtext}
             name="search"
             variant="outlined"
             label="Search Blogs"
             fullWidth
             value={search}
+            id="search-input"
             // onKeyPress={(e) => { handleKeyPress(e) }}
             onChange={(e) => {
               setSearch(e.target.value);
-            }} />
+            }}
+          />
           <ChipInput
             className={classes.tag}
             value={tags}
