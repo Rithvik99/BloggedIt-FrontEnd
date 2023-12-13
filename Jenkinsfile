@@ -13,19 +13,19 @@ pipeline{
                 url: 'https://github.com/Rithvik99/BloggedIt-FrontEnd.git'
             }
         }
-        stage('Building image') {
-            steps{
-                script {
-                dockerImage = docker.build registry + ":latest"
-                }
-            }
-        }
         stage('Test'){
             steps {
                 echo 'Building..'
                 sh 'npm install --legacy-peer-deps'
                 echo 'Testing..'
                 sh 'npm test'
+            }
+        }
+        stage('Building image') {
+            steps{
+                script {
+                dockerImage = docker.build registry + ":latest"
+                }
             }
         }
         stage('Deploy Image') {
