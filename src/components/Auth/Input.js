@@ -27,7 +27,7 @@ const Input = ({ name, handleChange, label, half, autoFocus, type, handleShowPas
                 )
             } : null}
             helperText={
-                name === 'email' ? 'Please enter a valid email (e.g., BloggedIt@gmail.com)' :
+                name === 'email' ? 'Please enter a valid email (e.g., BloggedIt@gmail.com)' :''
                 // name === 'password' && !half && !isSignUp ? 'Password will be at least 4 characters' :
                 // name === 'password' && !half && isSignUp ? 'Password should be at least 4 characters' : ''
               }
