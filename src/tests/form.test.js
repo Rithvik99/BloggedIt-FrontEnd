@@ -30,6 +30,7 @@ describe('Form Component', () => {
     }));
   });
 
+  
   test('renders form elements', () => {
     const { container: view, getByRole } = render(<Form currentId={0} setCurrentId={() => {}} setDisplayForm={() => {}} />);
     expect(view).toMatchSnapshot();
